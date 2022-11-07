@@ -1,38 +1,277 @@
-.App {
+.app {
+  min-height: 100vh;
+}
+
+.app__nav-bar {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.app__nav-barmenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.app__nav-barmenu a {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: antiquewhite;
+  letter-spacing: 2px;
+  transition: all 200ms linear;
+}
+
+.menu-button {
+  display: none;
+  font-weight: bold;
+  line-height: 1.2rem;
+  cursor: pointer;
+}
+
+.app__nav-barmenu li:hover a {
+  color: var(--main-clr);
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+}
+
+.app__nav-barmenu li a.active {
+  color: var(--main-clr);
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+}
+
+.app__nav-barmenu li a {
+  position: relative;
+}
+
+.app__nav-barmenu li a::before {
+  content: "";
+  right: 0;
+  left: 0;
+  position: absolute;
+  top: 110%;
+  height: 0.2rem;
+  background-color: var(--secondary-clr);
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 400ms ease-in-out;
+}
+
+.app__nav-barmenu li a.active::before {
+  transform: scale(1);
+}
+
+.app__nav-barmenu li:hover a::before {
+  transform: scale(1);
+}
+
+.app__nav-fixed {
+  position: fixed;
+  z-index: 1000;
+  background-color: hsla(0, 0%, 0%, 0.3);
+}
+
+.app__logo img {
+  width: 4rem;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.app__slider-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  color: var(--main-clr);
+}
+
+.app__slider-content h1 {
+  color: var(--secondary-clr);
+  text-transform: uppercase;
+  text-shadow: 1px 0px 1px var(--main-clr), 2px 0px 1px var(--main-clr),
+    3px 0px 1px var(--main-clr), 4px 0px 1px var(--main-clr),
+    5px 0px 1px var(--main-clr), 6px 0px 1px var(--main-clr);
+  font-size: 3em;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app__slider-content h3 {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0ch;
+  border-right: 2px solid var(--secondary-clr);
+  animation: reveal 10s infinite steps(31);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.app__slider-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.btn {
+  padding: 0.4rem 1rem;
+  font-size: 1rem;
+  color: var(--secondary-clr);
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  background-color: var(--main-clr);
+  border: none;
+  border-radius: 1000px;
+  cursor: pointer;
+  transition: all 300ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn:hover {
+  color: var(--main-clr);
+  background-color: var(--secondary-clr);
+  transform-origin: bottom center;
+  transform: scale(1.2);
+}
+
+.app__slider-button:has(.btn.active) {
+  display: none;
+}
+
+/* BREADCRUMB */
+
+.app__breadcrumb-section {
+  margin: 1rem auto;
+  width: 96%;
+}
+
+.app__breabcrumb {
+  padding: 0.8rem 1rem;
+  border: 1px solid hsl(0, 0%, 90%);
+  border-radius: 4px;
+  background: var(--main-light-clr);
+}
+
+.app__breabcrumb ol {
+  display: flex;
+  list-style: none;
+}
+
+.app__breabcrumb li + li::before {
+  display: inline-block;
+  margin-inline: 0.25rem;
+  content: "";
+  height: 0.8rem;
+  border-right: 0.1rem solid currentColor;
+  transform: rotate(15deg);
+}
+
+.app__breabcrumb [aria-current*="page"] {
+  color: hsla(0, 0%, 0%, 0.3);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* FOOTER */
+
+footer {
+  width: 100%;
+  margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: var(--shadow-black-clr);
 }
 
-.App-link {
-  color: #61dafb;
+.footer-icon {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background: var(--main-clr);
+  color: var(--secondary-clr);
+  margin-bottom: 0.5rem;
+  line-height: 3rem;
+  font-size: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+footer h3 {
+  font-size: 1rem;
+  color: black;
+  padding: 0.4rem 0;
+}
+
+footer p {
+  line-height: 1.8rem;
+  font-size: 1.4rem;
+  color: var(--main-clr);
+}
+
+footer .credit {
+  width: 96%;
+  border-top: 0.1rem solid var(--main-clr);
+  padding: 0.4rem 2rem;
+  color: var(--main-clr);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer_links ul {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer_links ul a {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 680px) {
+  .menu-button {
+    display: block;
   }
-  to {
-    transform: rotate(360deg);
+
+  .app__nav-barmenu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-left: -100%;
+    min-height: 100vh;
+    background: hsla(0, 0%, 0%, 0.9);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    transition: margin-left 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    align-items: center;
+  }
+
+  .app__nav-barmenu.active {
+    margin-left: 0;
+  }
+
+  .app__slider-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .app__nav-barmenu a {
+    font-size: 2.5rem;
+    color: var(--main-clr);
+    transition: all 200ms linear;
+  }
+
+  .app__nav-barmenu li:hover a {
+    color: var(--secondary-clr);
+    transform-origin: top center;
+    transform: scale(1.4);
   }
 }
